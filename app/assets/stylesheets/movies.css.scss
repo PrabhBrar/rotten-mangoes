@@ -1,3 +1,108 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.side-image {  
+  $base-line-height: 1.5em !default;
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $large-screen: em(860) !default;
+  $base-font-color: $dark-gray !default;
+  $side-image-background-top: #B5EBEB;
+  $side-image-background-bottom: #5DAC5D;
+  $side-image-content-background: #F9F9F9;
+  $side-image-border: 1px solid darken(transparentize($side-image-background-bottom, 0.8), 30%);
+  $side-image-height: 300px;
+  $images-wrapper-height: $side-image-height - 10px;
+  $side-image-content-height: $side-image-height - 10px;
+  $poster-image-height: $images-wrapper-height - 2px;
+  $director-color: #800000;
+  $movie-title-color: #95B205;
+
+  background: $side-image-content-background;
+  heigth: $side-image-height;
+
+  @include media($large-screen) {
+    display: inline-block;
+  }
+
+  .images-wrapper {
+//     @include background(url('https:
+// //raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png'), linear-gradient($side-image-background-top, $side-image-background-bottom), no-repeat $side-image-background-top scroll);
+    // background-color: $side-image-background-top;
+    // background-size: cover;
+    border-bottom: $side-image-border;
+    display: inline-block;
+    height: $images-wrapper-height;
+    padding: 0px 1px 2px 0px;
+
+    @include media($large-screen) {
+      @include span-columns(5);
+      background-position: bottom;
+      background-size: cover;
+      border-right: $side-image-border;
+    }
+
+    .poster-image {
+      width: 100%;
+      height: $poster-image-height;
+    }
+
+  }
+
+  .side-image-content {
+    @include span-columns(12);
+    padding: 1em 1em 4em 1em;
+
+    @include media($large-screen) {
+      @include span-columns(7);
+      height: $side-image-content-height;
+      padding: 5px;
+    }
+
+    
+
+    h2 {
+      margin-bottom: 1px;
+      margin-top: 20px;
+
+      a {
+        color: $movie-title-color;
+      }
+
+      p {
+        color: $base-font-color;
+        // line-height: $base-line-height;
+        display: inline-block;
+        font-size: 15px;
+        margin-bottom: 1px;
+        margin-left: 10px;
+      }
+    }
+
+    h4 {
+      margin-top: 5px;
+      margin-left: 5px;
+      background: #BBB;
+      color: $director-color;
+      display: inline-block;
+      font-size: 0.75em;
+      text-transform: uppercase;
+    }
+
+  }
+
+  @include reset-display();
+}
+
+.new-movie {
+  text-align: center;
+  button{
+    @include button(shiny, #ff0000);
+  }
+}
+
+.article-body {
+  min-height: 100%;
+}
