@@ -1,5 +1,9 @@
 <section class="article-body">
   <hr>
+  <div class='new-movie'>
+    <%= link_to button_tag("Submit New Movie"), new_movie_path %>
+  </div>
+  <hr>
   <% @movies.each do |movie| %>
     <div class="side-image">
       <div class="images-wrapper">

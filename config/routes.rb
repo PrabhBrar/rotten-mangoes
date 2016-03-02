@@ -1,5 +1,9 @@
 RottenMangoes::Application.routes.draw do
   
+
+  namespace :admin do
+    resources :users, only: [:index]
+  end
   resources :movies do
     resources :reviews, only: [:new, :create]
   end

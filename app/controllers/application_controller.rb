@@ -16,6 +16,17 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  helper_method :current_user
+  def restrict_admin_access
+    if !admin?
+      flash[:alert] = "Admin access only!"
+      redirect_to movies_path
+    end
+  end
+
+  def admin?
+    session[:admin] == 1 ? true : false
+  end
+
+  helper_method :current_user, :admin?
   
 end
