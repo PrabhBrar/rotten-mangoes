@@ -3,8 +3,8 @@
   <% @movies.each do |movie| %>
     <div class="side-image">
       <div class="images-wrapper">
-        <% if movie.image? %>
-          <%= link_to image_tag(movie.image_url(:thumb), class: 'poster-image'), movie_path(movie) %>
+        <% if painting.image? %>
+          <%= link_to image_tag painting.image_url(:thumb) %>
         <% else %>
           <%= link_to image_tag(movie.poster_image_url, class: 'poster-image'), movie_path(movie) %>
         <% end %>
