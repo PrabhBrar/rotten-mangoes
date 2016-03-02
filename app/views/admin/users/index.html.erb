@@ -1,0 +1,28 @@
+<section class="article-body">
+  <hr>
+
+  <table class="table-minimal">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Active Since</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.firstname %></td>
+          <td><%= user.lastname %></td>
+          <td><%= user.email %></td>
+          <td><%= user.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</section> 
+<section class="pagination">
+  <%= will_paginate @users %>
+</section>

@@ -43,6 +43,8 @@ gem "rmagick"
 
 gem "carrierwave"
 
+gem 'will_paginate'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
