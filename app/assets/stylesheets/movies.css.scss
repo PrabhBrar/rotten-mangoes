@@ -101,15 +101,6 @@
   @include reset-display();
 }
 
-.new-movie, .search-form-submit {
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  button{
-    @include button(shiny, #ff0000);
-  }
-}
-
 .article-body {
   min-height: 100%;
 
