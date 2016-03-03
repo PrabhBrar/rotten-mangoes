@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
     "#{firstname} #{lastname}"
   end
 
+  def is_admin?
+    admin == 1 ? true : false
+  end
+
 end
