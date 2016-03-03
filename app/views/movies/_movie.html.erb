@@ -1,0 +1,22 @@
+<div class="side-image">
+  <div class="images-wrapper">
+    <% if @movie.image? %>
+      <%= link_to image_tag(@movie.image_url, class: 'poster-image') %>
+    <% else %>
+      <%= link_to image_tag(@movie.poster_image_url, class: 'poster-image'), movie_path(@movie) %>
+    <% end %>
+  </div>
+  <div class="side-image-content">
+    <h2><%= link_to @movie.title, movie_path(@movie) %><p>(<%= formatted_date(@movie.release_date) %>)</p></h2>
+    <div class="movie-details">
+      <h4>Directed By: <%= @movie.director %></h4>
+      <h4>Runtime: <%= @movie.runtime_in_minutes %> minutes</h4>
+    </div>
+    <div class="expander">
+      <a href="javascript:void(0)" class="expander-trigger expander-hidden">Description</a>
+      <div class="expander-content">
+        <p><%= @movie.description %></p>
+      </div>
+    </div>
+  </div>
+</div>

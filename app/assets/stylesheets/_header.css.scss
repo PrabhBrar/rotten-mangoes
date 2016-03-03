@@ -24,12 +24,19 @@ header.navigation {
   min-height: $navigation-height;
   width: 100%;
   z-index: 999;
+  display: block;
 
   .navigation-wrapper {
     @include clearfix;
     @include outer-container;
     position: relative;
     z-index: 9999;
+
+    .login-control {
+      display: inline-block;
+      float: right;
+      margin-top: 8px; 
+    }
   }
 
   .logo {

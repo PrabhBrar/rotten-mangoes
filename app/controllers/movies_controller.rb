@@ -2,9 +2,7 @@ class MoviesController < ApplicationController
 
   def index
     if search_params
-      str = Movie.search_string(search_params)
-      p str
-      @movies = Movie.where(str)
+      @movies = Movie.search(search_params)
     else
       @movies = Movie.all
     end
@@ -57,7 +55,7 @@ class MoviesController < ApplicationController
   end
 
   def search_params
-    params.permit(:title, :director, :duration).delete_if { |key, value| value.blank? }
+    params.permit(:keyword, :duration).delete_if { |key, value| value.blank? }
   end
 
 end

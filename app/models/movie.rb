@@ -25,6 +25,8 @@ class Movie < ActiveRecord::Base
     reviews.sum(:rating_out_of_ten)/reviews.size
   end
 
+  scope :search, -> (search_params) { where(Movie.search_string(search_params)) }
+
   def self.search_string(search_params)
     str = ""
     case search_params["duration"]
@@ -32,12 +34,14 @@ class Movie < ActiveRecord::Base
       str = "runtime_in_minutes < 90"
     when "Between 90 and 120 minutes"
       str = "runtime_in_minutes >= 90 AND runtime_in_minutes <= 120"
-    when "ver 120 minutes"
+    when "Over 120 minutes"
       str = "runtime_in_minutes > 120"
     end
-    search_params.delete_if { |key, value| key == "duration" }
-    str += " AND " if !str.empty? && search_params.length > 0
-    str += search_params.map { |key, value| "#{key} LIKE '%#{value}%'" if key != "runtime_in_minutes" }.join(' AND ')
+    str += " AND " if !str.empty? && search_params.length > 1
+    if search_params["keyword"]
+      str += "title LIKE '%#{search_params["keyword"]}%' OR director LIKE '%#{search_params["keyword"]}%'"
+    end
+    str
   end
 
   protected

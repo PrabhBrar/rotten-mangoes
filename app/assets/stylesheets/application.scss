@@ -13,6 +13,7 @@
  *= require_self
  */
 
+@import "normalize";
 @import "bourbon";
 @import "users";
 @import "neat";
@@ -24,3 +25,4 @@
 @import "modal";
 @import "pagination";
 @import "table";
+@import "dropdown";
