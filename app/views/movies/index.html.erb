@@ -1,9 +1,24 @@
 <section class="article-body">
-  <hr>
-  <div class='new-movie'>
-    <%= link_to button_tag("Submit New Movie"), new_movie_path %>
+
+  <div class="search-form">
+  <%= form_tag movies_path, method: :get do -%>
+    <div class="search-form-element">
+      <%= label_tag :title %>
+      <%= text_field_tag :title %>
+    </div>
+    <div class="search-form-element">
+      <%= label_tag :director %>
+      <%= text_field_tag :director %>
+    </div>
+    <div class="search-form-element">
+      <%= label_tag :duration %>
+      <%= select_tag :duration, options_for_select([ "Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes" ] ), { :prompt => 'Select duration' } %>
+    </div>
+    <div class="search-form-submit">
+      <%= button_tag("Search") %>
+    </div>
+  <% end -%>
   </div>
-  <hr>
   <% @movies.each do |movie| %>
     <div class="side-image">
       <div class="images-wrapper">
@@ -15,8 +30,10 @@
       </div>
       <div class="side-image-content">
         <h2><%= link_to movie.title, movie_path(movie) %><p>(<%= formatted_date(movie.release_date) %>)</p></h2>
-        <h4>Directed By: <%= movie.director %></h4>
-        <h4>Runtime: <%= movie.runtime_in_minutes %> minutes</h4>
+        <div class="movie-details">
+          <h4>Directed By: <%= movie.director %></h4>
+          <h4>Runtime: <%= movie.runtime_in_minutes %> minutes</h4>
+        </div>
         <div class="expander">
           <a href="javascript:void(0)" class="expander-trigger expander-hidden">Description</a>
           <div class="expander-content">
@@ -25,6 +42,8 @@
         </div>
       </div>
     </div>
-    <hr>
   <% end %>
 </section> 
+<div class='new-movie'>
+  <%= link_to button_tag("Submit New Movie"), new_movie_path %>
+</div>
