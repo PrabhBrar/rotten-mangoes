@@ -20,7 +20,7 @@
   $director-color: #800000;
   $movie-title-color: #95B205;
 
-  background: $side-image-content-background;
+  //background: $side-image-content-background;
   heigth: $side-image-height;
 
   @include media($large-screen) {
@@ -81,14 +81,19 @@
       }
     }
 
-    h4 {
-      margin-top: 5px;
-      margin-left: 5px;
-      background: #BBB;
-      color: $director-color;
-      display: inline-block;
-      font-size: 0.75em;
-      text-transform: uppercase;
+    .movie-details {
+      margin-bottom: 5px;
+
+      h4 {
+        margin: 0;
+        padding-top: 1px;
+        // margin-left: 5px;
+        // background: #BBB;
+        color: $director-color;
+        // display: inline-block;
+        font-size: 15px;
+        // text-transform: uppercase;
+      }
     }
 
   }
@@ -96,8 +101,10 @@
   @include reset-display();
 }
 
-.new-movie {
+.new-movie, .search-form-submit {
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
   button{
     @include button(shiny, #ff0000);
   }
@@ -105,4 +112,14 @@
 
 .article-body {
   min-height: 100%;
+
+  .search-form {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+    .search-form-element {
+      display: inline-block;
+    }
+  }
 }
